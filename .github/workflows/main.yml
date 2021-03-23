@@ -25,21 +25,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-      - name: Install Nodejs
+      - name: Installing Node on ubuntu VM
         uses: actions/setup-node@v2-beta
         with:
-          node-version: 12
-      
+         node-version: 12  
+    
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install # will run yarn install command
-      
-      - name: Build React app
-        run: yarn build
-      
-      - name: Insatll Surge
-        run: npm install --global surge   
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command
+  
+      - name: GitHub Action for Installing Surge on ubuntu VM through npm
+        run:  npm install --global surge   
      
       - name: Deploy to Surge
         run: surge ./build expensetracker-app2021.surge.sh --token ${{ secrets.SURGE_TOKEN }}
