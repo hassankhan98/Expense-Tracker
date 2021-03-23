@@ -30,19 +30,18 @@ jobs:
         with:
           version: 12
   
-     # install yarn
-      - name: install yarn
-        uses: borales/actions-yarn@v2.0.0
+     # Github Action for Yarn
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v2.3.0
         with:
-           cmd: install # run install command
-           
-       # build react app with yarn 
-      - name: build react app
+      # Yarn command
+          cmd: install
+    # Building Yarn
+      - name: Building Yarn
         run: yarn build
-        
-       # install surge
-      - name: install surge 
-        run: npm install -g surge
-        
-      - name: Deploy to Surge
+    # Installing Surge
+      - name: Insatalling Surge
+        run: npm install -g surge   
+     
+     - name: Deploy to Surge
         run: surge ./build expensetracker-app2021.surge.sh --token ${{ secrets.SURGE_TOKEN }}
