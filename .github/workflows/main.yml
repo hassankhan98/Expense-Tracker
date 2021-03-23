@@ -30,16 +30,18 @@ jobs:
         with:
           version: 12
   
-     # Install Yarn
-      - name: install YARN
+     # install yarn
+      - name: install yarn
         uses: borales/actions-yarn@v2.0.0
         with:
-         cmd: install
-       #build react app with yarn
+           cmd: install # run install command
+           
+       # build react app with yarn 
       - name: build react app
         run: yarn build
+        
        # install surge
-      - name: install surge
+      - name: install surge 
         run: npm install -g surge
         
       - name: Deploy to Surge
