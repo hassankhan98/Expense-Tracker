@@ -10,6 +10,7 @@ import './App.css';
 function App() {
   return (
     <GlobalProvider>
+      <div></div>
       <Header />
       <div className="container">
       <Balance />
